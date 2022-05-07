@@ -1,0 +1,43 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles//mixins/flexbox';
+@use '/src/styles/mixins/position';
+
+.toggleBox {
+  position: relative;
+  width: 400px;
+  height: 50px;
+}
+
+.checkBox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: colors.$GRAYD;
+  border-radius: 30px;
+
+  &::before {
+    @include position.posCenterY;
+    left: 7px;
+    width: 45%;
+    height: 80%;
+    content: '';
+    background-color: colors.$WHITE;
+    border-radius: 30px;
+    transition: 0.2s;
+  }
+
+  &:checked {
+    &::before {
+      left: 214px;
+    }
+  }
+}
+
+.textContainer {
+  @include flexbox.flexbox(around, center);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}

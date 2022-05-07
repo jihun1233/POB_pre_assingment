@@ -1,0 +1,45 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles//constants/colors';
+@use '/src/styles/mixins/position';
+
+.inputBox {
+  @include flexbox.flexbox(center, start);
+  position: relative;
+  flex-direction: column;
+
+  label:not(:first-child) {
+    margin-top: 30px;
+  }
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.input {
+  width: 300px;
+  height: 40px;
+  border: colors.$GRAYA 1px solid;
+  border-radius: 5px;
+
+  &:focus {
+    border: colors.$BLACK 1px solid;
+  }
+}
+
+.inputIcon {
+  @include position.posCenterY;
+  right: 3px;
+
+  &.valid {
+    color: colors.$GREEN;
+  }
+
+  &.pwIcon {
+    cursor: pointer;
+  }
+}
+
+.emailValidMsg {
+  color: colors.$RED;
+}
